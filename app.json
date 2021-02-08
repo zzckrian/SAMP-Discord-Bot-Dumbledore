@@ -1,0 +1,7 @@
+{
+    "name": "Dumbledore Discord BOT",
+    "description": "SAMP DISCORD BOT",
+    "repository": "https://github.com/abhaysv/SAMP-Discord-Bot-Dumbledore",
+    "logo": "https://i.imgur.com/MkFud1l.png",
+    "keywords": ["node", "express", "static", "samp-dicord-bot"]
+  }
