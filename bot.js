@@ -49,14 +49,9 @@ client.on('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`);
 	setTimeout(getLastReportId, 1000);
 	setInterval(ReportSync, 20000);
-	client.user.setPresence({
-        status: "idle",  //Bebas
-        game: {
-            name: "testing",  //Status
-            type: "WATCHING" //PLAYING: WATCHING: LISTENING: STREAMING:
-        }
-    });
- });
+	
+
+});
 //-----------------------------[Debug]-----------------------------------
 function toggle_debug() 
 {
