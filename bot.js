@@ -49,6 +49,16 @@ client.on('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`);
 	setTimeout(getLastReportId, 1000);
 	setInterval(ReportSync, 20000);
+	client.on("ready", () =>{
+		console.log(`Logged in as ${client.user.tag}!`);
+		client.user.setPresence({
+			status: "idle",  //You can show online, idle....
+			game: {
+				name: "igo",  //The message shown
+				type: "STREAMING" //PLAYING: WATCHING: LISTENING: STREAMING:
+			}
+		});
+	 });
 	
 
 });
