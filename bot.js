@@ -451,7 +451,7 @@ const Clear_Messages = (msg,amount) => {
 	msg.channel.send(`No of messaes deleted ${amount}`)
 };
 const setChannel = (msg,param) => {
-	if (!msg.guild) 
+	if (!permcheck) 
 	{
 		msg.reply("This command can only be used in a guild.");
 		return;
