@@ -7,6 +7,7 @@
     "start": "node bot.js"
   },
   "dependencies": {
+    "node": "14.x", 
     "cryptiles": "file:node_modules/cryptiles",
     "discord.js": "12.5.1",
     "mysql": "*",
