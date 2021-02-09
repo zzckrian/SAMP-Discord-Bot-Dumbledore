@@ -43,12 +43,16 @@ var db = mysql.createConnection({
 
 //_______________________________[BOT Startup]_________________________________________________
 //@audit-ok Client Ready
-bot.on("ready", () =>{
-	console.log(`Logged in as ${bot.user.tag}!`);
-	bot.user.setPresence({ game: { name: 'PLAYING' }, status: 'online' });
-	bot.user.setGame('High Mild', 'samp://52.3.246.128:7777');
-	
-	});
+bot.on('ready', () => {
+    bot.user.setStatus('online')
+    bot.user.setPresence({
+        game: {
+            name: 'in High Mild',
+            type: "PLAYING",
+            url: "samp://52.3.246.128:7777'"
+        }
+    });
+});
 
  //bot.user.setGame({
 	//status: "dnd",  //online, idle, jeung nu sejenna
