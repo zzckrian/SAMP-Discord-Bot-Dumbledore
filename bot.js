@@ -48,7 +48,7 @@ bot.on('ready', () => {
     bot.user.setPresence({
         game: {
             name: 'in High Mild',
-            type: "PLAYING",
+            type: "STREAMING",
             url: "samp://52.3.246.128:7777'"
         }
     });
