@@ -45,7 +45,7 @@ var db = mysql.createConnection({
 //@audit-ok Client Ready
 bot.on("ready", () =>{
 	console.log(`Logged in as ${bot.user.tag}!`);
-	client.user.setPresence({ game: { name: 'PLAYING' }, status: 'online' });
+	bot.user.setPresence({ game: { name: 'PLAYING' }, status: 'online' });
 	bot.user.setGame('High Mild', 'samp://52.3.246.128:7777');
 	
 	});
