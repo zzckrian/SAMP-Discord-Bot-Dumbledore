@@ -8,7 +8,7 @@
 
 //______________________[Discord JS and SAMP Query Library]______________________________
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const bot = new Discord.Client();
 
 var query = require('samp-query');
 
@@ -43,19 +43,19 @@ var db = mysql.createConnection({
 
 //_______________________________[BOT Startup]_________________________________________________
 //@audit-ok Client Ready
-//@audit-ok Client Ready
-client.on("ready", () =>{
-	console.log(`Logged in as ${client.user.tag}!`);
-	client.user.setPresence({
-		status: "dnd",  //online, idle, jeung nu sejenna
-		game: {
-			name: "Netflix",  //pesan nu ditempokeun
-			type: "STREAMING" //PLAYING: WATCHING: LISTENING: STREAMING:
-		}
+bot.on("ready", () =>{
+	console.log(`Logged in as ${bot.user.tag}!`);
+	client.user.setPresence({ game: { name: 'PLAYING' }, status: 'online' });
+	bot.user.setGame('High Mild', 'samp://52.3.246.128:7777');
+	
 	});
- });
 
-
+ //bot.user.setGame({
+	//status: "dnd",  //online, idle, jeung nu sejenna
+	//game: {
+	//	name: "Netflix",  //pesan nu ditempokeun
+	//	type: "STREAMING" //PLAYING: WATCHING: LISTENING: STREAMING:
+//	}
  // console.log('Dumbledore Woke Up from sleep!');
 	//console.log(`Logged in as ${client.user.tag}!`);
 	//setTimeout(getLastReportId, 1000);
@@ -119,7 +119,7 @@ function ReportSync()
 						],
 					}
 				};
-				client.channels.get(reportChannelID).send(logMessage);
+				bot.channels.get(reportChannelID).send(logMessage);
 			
 			}
 			if(!row.length && Bot_debug_mode)
@@ -215,7 +215,7 @@ function sBAN(msg,params)
 							],
 						}
 					}
-					client.channels.get(adminCmdsChannelID).send(logMessage);
+					bot.channels.get(adminCmdsChannelID).send(logMessage);
 				}
 				else
 				client.channels.get(adminCmdsChannelID).send("No ban found !!!");   
@@ -256,7 +256,7 @@ function uBAN(msg,params)
 					
 				}
 				else
-				client.channels.get(adminCmdsChannelID).send("No ban found !!!");   
+				bot.channels.get(adminCmdsChannelID).send("No ban found !!!");   
 		   }
 		   else 
 			   console.log(`[ERROR]SQL Error(uBAN):${err}`);
@@ -282,7 +282,7 @@ function uBAN_Process(banid)
 		{ 	
 			if(Bot_debug_mode)
 				console.log(sqlq);
-			client.channels.get(adminCmdsChannelID).send(`The user has been unbanned`); 
+			bot.channels.get(adminCmdsChannelID).send(`The user has been unbanned`); 
 		}
 		else 
 			console.log(`[ERROR]SQL Error(uBAN_Process):${err}`);
@@ -313,7 +313,7 @@ const applicationFormCompleted = (data) => {
             ],
         }
     }
-    client.channels.get(userToSubmitApplicationsTo).send(logMessage);
+    bot.channels.get(userToSubmitApplicationsTo).send(logMessage);
 };
 
 const addUserToRole = (msg, roleName) => {
@@ -430,7 +430,7 @@ const Clear_Messages = (msg,amount) => {
 	{
         msg.channel.sendMessage("Sorry, you don't have the permission to execute the command \""+msg.content+"\"");
         return;
-	} else if (!msg.channel.permissionsFor(client.user).hasPermission("MANAGE_MESSAGES")) 
+	} else if (!msg.channel.permissionsFor(bot.user).hasPermission("MANAGE_MESSAGES")) 
 	{
         msg.channel.sendMessage("Sorry, I don't have the permission to execute the command \""+msg.content+"\"");
         return;
@@ -566,7 +566,7 @@ const helpinfo = (msg) => {
 //______________________[COMMAND PROCESSOR]__________________________________
 //@audit-ok Commands
 
-client.on('message', msg => {
+bot.on('message', msg => {
 
 	//------------------------------[Medthod 1 For cmds]--------------------------------
     if (msg.content === 'dumbledore') 
@@ -576,7 +576,7 @@ client.on('message', msg => {
 
     }
 
-    if (msg.content === '/ip') 
+    if (msg.content === '.ip') 
     {
 
         msg.reply(`Server IP: ${Samp_IP}`);
@@ -674,6 +674,6 @@ client.on('message', msg => {
 
 //====================== BOT TOKEN FROM ENV VAIABLE ===================================
 
-client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
+bot.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
 
 //=====================================================================================
